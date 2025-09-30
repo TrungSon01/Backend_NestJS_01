@@ -1,0 +1,415 @@
+{
+	"info": {
+		"_postman_id": "eb6bd35c-6507-4a8b-908e-36791ec79ad4",
+		"name": "capstone01",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47097793",
+		"_collection_link": "https://trungson01-2289406.postman.co/workspace/trungson01's-Workspace~ef79f15d-f36b-45c4-8147-f1a77f3f0c4b/collection/47097793-eb6bd35c-6507-4a8b-908e-36791ec79ad4?action=share&source=collection_link&creator=47097793"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ho_ten\": \"trungson\",\r\n    \"email\": \"trungson@gmail.com\",\r\n    \"mat_khau\": \"trungson\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5172/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5172",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"email\": \"minhbeo@gmail.com\",\r\n    \"mat_khau\": \"minhbeo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5172/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5172",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "postImage",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/Nguyễn Trung Sơn/Pictures/Screenshots/Screenshot 2025-08-18 224008.png"
+						},
+						{
+							"key": "ten_hinh",
+							"value": "hinh_01",
+							"type": "text"
+						},
+						{
+							"key": "mo_ta",
+							"value": "hình đẹp quá",
+							"type": "text"
+						},
+						{
+							"key": "nguoi_dung_id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5172/api/user/uploadCloud",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5172",
+					"path": [
+						"api",
+						"user",
+						"uploadCloud"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getImage",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"page\":\"1\",\r\n    \"pageSize\":\"1\"\r\n    \"mo_ta\":\"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5172/api/user/getImage",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5172",
+					"path": [
+						"api",
+						"user",
+						"getImage"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getDetailImage and User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"page\":\"1\",\r\n    \"pageSize\":\"1\"\r\n    \"mo_ta\":\"\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5172/api/user/getDetailImage?hinh_id=4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5172",
+					"path": [
+						"api",
+						"user",
+						"getDetailImage"
+					],
+					"query": [
+						{
+							"key": "hinh_id",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "isSaveImage?",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "user comment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"noi_dung\":\"hay\",\r\n    \"hinh_id\":2,\r\n    \"nguoi_dung_id\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5172/api/user/comment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5172",
+					"path": [
+						"api",
+						"user",
+						"comment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DetailUser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5172/api/manage/userDetail?nguoi_dung_id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5172",
+					"path": [
+						"api",
+						"manage",
+						"userDetail"
+					],
+					"query": [
+						{
+							"key": "nguoi_dung_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list image by user id",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "list image was save by user id",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "uploadAvatar",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5172/api/user/updateAvatar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5172",
+					"path": [
+						"api",
+						"user",
+						"updateAvatar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete image",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuZ3VvaV9kdW5nX2lkIjoxLCJpYXQiOjE3NTg5ODQ0NzEsImV4cCI6MTc1ODk4ODA3MX0.HxPnc8QTXe0Dy7f57_6AK5ZFDeSSxaKnq3MK0iowFgE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5172/api/user/deleteImageById?hinh_id=4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5172",
+					"path": [
+						"api",
+						"user",
+						"deleteImageById"
+					],
+					"query": [
+						{
+							"key": "hinh_id",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuZ3VvaV9kdW5nX2lkIjoxLCJpYXQiOjE3NTg5OTA5MjIsImV4cCI6MTc1ODk5NDUyMn0.1ECDv1x0hsZX1FOzxeHnVDLmKZzj0Q4hTS1QqLkP5FM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"ho_ten\":\"trung son ne\",\r\n\"tuoi\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5172/api/manage/changeInforUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5172",
+					"path": [
+						"api",
+						"manage",
+						"changeInforUser"
+					],
+					"query": [
+						{
+							"key": "nguoi_dung_id",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Comment",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
